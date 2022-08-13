@@ -68,4 +68,14 @@ public class BoardDaoImpl implements BoardDao {
     public List<BoardDto> searchSelectPage(SearchCondition sc) throws Exception {
         return session.selectList(namespace+"searchSelectPage", sc);
     } // List<E> selectList(String statement, Object parameter)
+
+
+    @Override
+    public int updateCommentCnt(Integer bno, int cnt) throws Exception {
+        Map map = new HashMap();
+        map.put("bno", bno);
+        map.put("cnt", cnt);
+        return session.update(namespace+"updateCommentCnt", map);
+    } // int update(String statement, Object parameter)
+
 }

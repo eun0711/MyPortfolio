@@ -194,4 +194,11 @@ public class BoardDaoImplTest {
         assertTrue(boardDto!=null);
         assertTrue(boardDto.getView_cnt() == 2);
     }
+
+    @Test
+    public void searchSelectPageTest() throws Exception{
+        SearchCondition sc = new SearchCondition();
+        sc.setPage(10);
+        boardDao.searchSelectPage(sc);
+    }
 }

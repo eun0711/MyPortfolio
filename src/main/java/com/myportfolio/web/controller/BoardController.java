@@ -105,11 +105,14 @@ public class BoardController {
             int totalCnt = boardService.getSearchResultCnt(sc);
             m.addAttribute("totalCnt", totalCnt);
 
-            PageHandler pageHandler = new PageHandler(totalCnt, sc);
+            if(totalCnt>0){
 
-            List<BoardDto> list = boardService.getSearchResultPage(sc);
-            m.addAttribute("list", list);
-            m.addAttribute("ph", pageHandler);
+                PageHandler pageHandler = new PageHandler(totalCnt, sc);
+
+                List<BoardDto> list = boardService.getSearchResultPage(sc);
+                m.addAttribute("list", list);
+                m.addAttribute("ph", pageHandler);
+            }
 
             Instant startOfToday = LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant();
             m.addAttribute("startOfToday", startOfToday.toEpochMilli());
